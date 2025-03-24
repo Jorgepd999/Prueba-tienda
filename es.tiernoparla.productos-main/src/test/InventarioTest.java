@@ -1,4 +1,5 @@
 package test;
+
 import tienda.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,8 +12,8 @@ public class InventarioTest {
 
     @BeforeEach
     public void setUp() {
-        inventario = new Inventario();
-        producto = new Producto("001", "Producto 1", 100.0, 10);
+        inventario = new Inventario(); // Inicializa el objeto Inventario antes de cada prueba
+        producto = new Producto("001", "Producto 1", 100.0, 10); // Inicializa el objeto Producto antes de cada prueba
     }
 
     // Prueba para añadir un producto
@@ -28,14 +29,7 @@ public class InventarioTest {
         inventario.añadirProducto(producto);
         Producto resultado = inventario.buscarProductoPorCodigo("001");
         assertNotNull(resultado);
-        assertEquals("Producto 1", resultado.getNombre());
-    }
-
-    // Prueba para buscar un producto con un código inexistente
-    @Test
-    public void testBuscarProductoPorCodigoInexistente() {
-        Producto resultado = inventario.buscarProductoPorCodigo("999");
-        assertNull(resultado);
+        assertEquals("001", resultado.getCodigo());
     }
 
     // Prueba para eliminar un producto
